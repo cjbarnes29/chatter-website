@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="theme-color" content="#F5EFE6" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Chatter" />
+    <meta name="description" content="Chatter — private messaging with Ghost Canvas, smart replies and PIN protection." />
+    <title>Chatter — Messaging</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Fonts load without blocking the first paint; text shows in a system font until they arrive -->
+    <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Nunito:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" /></noscript>
+    <style>
+      /* Launch screen: painted by the browser before any script runs, so the app never opens on a blank white page */
+      html, body { margin: 0; background: #F6F1E8; }
+      #boot { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #F6F1E8; color: #1C1926; font: 800 26px/1 system-ui, sans-serif; letter-spacing: -0.02em; }
+      #boot i { width: 28px; height: 28px; border-radius: 50%; border: 3px solid rgba(224, 78, 42, .25); border-top-color: #E04E2A; animation: boot-spin .8s linear infinite; }
+      @keyframes boot-spin { to { transform: rotate(360deg); } }
+      @media (prefers-reduced-motion: reduce) { #boot i { animation-duration: 2.4s; } }
+    </style>
+    <script type="module" crossorigin src="./assets/index-Ca_2gz2l.js"></script>
+  </head>
+  <body>
+    <div id="root"><div id="boot" role="status" aria-label="Loading Chatter"><span>Chatter</span><i></i></div></div>
+  </body>
+</html>

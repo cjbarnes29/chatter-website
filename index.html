@@ -300,9 +300,10 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
 </div>
 <div class="dl-card dl-web rv" style="--k:1">
 <h3>Web app</h3>
-<p class="dl-sub">No file to download. Installs from this page and opens full-screen.</p>
+<p class="dl-sub">No file to download. Installs the real Chatter app and opens it full-screen.</p>
 <button class="dl-btn alt" id="webbtn" type="button"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M12 18h.01"/></svg>Install the web app</button>
 <p class="dl-fine" id="webmsg" role="status" hidden></p>
+<p class="dl-fine"><a href="app/" id="openapp">Or open Chatter in your browser now</a></p>
 <ul class="dl-os"><li><b>Android Chrome:</b> tap Install, or menu &#8942; &rarr; Install app</li><li><b>iPhone Safari:</b> Share &rarr; Add to Home Screen</li><li><b>Windows or Mac:</b> the install icon in the address bar of Chrome or Edge</li></ul>
 </div>
 <div class="dl-card dl-scan rv" style="--k:2">
@@ -463,7 +464,7 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
   window.chatterInstall=function(){btn.click();};
   btn.addEventListener("click",function(){
     if(ev){ev.prompt();ev.userChoice.finally(function(){ev=null;btn.hidden=true;});}
-    else if(ios){alert("To install: tap the Share button, then Add to Home Screen.");}
+    else if(ios){alert("Opening Chatter. Then tap the Share button, then Add to Home Screen.");location.href="app/";}
   });
   window.addEventListener("appinstalled",function(){btn.hidden=true;});
 })();
@@ -479,7 +480,7 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
   if(b)b.addEventListener("click",function(){
     if(standalone){say("Chatter is already installed on this device.");return;}
     if(ev){ev.prompt();ev.userChoice.finally(function(){ev=null;});return;}
-    if(ios){say("On iPhone: tap the Share button, then Add to Home Screen.");return;}
+    if(ios){say("Opening Chatter. Then tap the Share button, then Add to Home Screen.");setTimeout(function(){location.href="app/";},1500);return;}
     say("Open this page in Chrome, tap the menu \u22EE, then choose Install app or Add to Home screen.");
   });
 })();

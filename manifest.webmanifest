@@ -2,7 +2,7 @@
   "name": "Chatter",
   "short_name": "Chatter",
   "description": "Chatter is a messaging app you can personalise, lock and draw in. Ghost Canvas, message tags, confidential chats and a Customization Studio.",
-  "start_url": "./",
+  "start_url": "app/",
   "scope": "./",
   "display": "standalone",
   "background_color": "#07080d",
