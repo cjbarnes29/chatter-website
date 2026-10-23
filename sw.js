@@ -1,6 +1,6 @@
 /* Chatter service worker: lets the site open offline and be installed.
    Bump CACHE when you change files, so phones pick up the new version. */
-const CACHE = "chatter-v1";
+const CACHE = "chatter-v2";
 const SHELL = ["./", "index.html", "terms.html", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
