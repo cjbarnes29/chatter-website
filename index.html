@@ -428,6 +428,8 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
       f.hidden=false;n.hidden=true;}catch(e){}}
   }
   function pick(list){
+    /* newest published first (GitHub lists by tag name, so a tag typed with an extra dot could hide a newer release) */
+    list=list.slice().sort(function(x,y){return new Date(y.published_at||0)-new Date(x.published_at||0);});
     for(var i=0;i<list.length;i++){var r=list[i];if(r.draft)continue;
       var as=(r.assets||[]).filter(function(a){return /scrmbl.*\.apk$/i.test(a.name);   /* only the scrambled (scrmbl) APK is offered */});
       if(as.length)return as[0].browser_download_url;}
