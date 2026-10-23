@@ -5,6 +5,13 @@
 <meta name="description" content="Chatter is a messaging app with Ghost Canvas, message tags, confidential chats and a customization studio. Download it for Android. Created by Carlou Joseph Barnes.">
 <title>Chatter | Neon</title>
 <meta name="theme-color" content="#07080d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Chatter">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307080d'/%3E%3Ccircle cx='32' cy='32' r='13' fill='%23ff6a2b'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -431,6 +438,24 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
       var u=pick(d);if(u)on(u);               /* no APK yet: stay off */
     }).catch(function(){on(FALLBACK,'See the downloads');});
   }catch(e){on(FALLBACK,'See the downloads');}
+})();
+</script>
+<button id="instBtn" type="button" hidden style="position:fixed;right:16px;bottom:16px;z-index:60;padding:12px 18px;border:0;border-radius:999px;background:#ff6a2b;color:#07080d;font:700 15px system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4);cursor:pointer">Install Chatter app</button>
+<script>
+/* Installable web app: service worker + install button. Adds to the home screen like an app. */
+(function(){
+  if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+  var btn=document.getElementById("instBtn"),ev=null;
+  var standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+  if(standalone||!btn)return;
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();ev=e;btn.hidden=false;});
+  var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!window.MSStream;
+  if(ios){btn.textContent="Add to Home Screen";btn.hidden=false;}
+  btn.addEventListener("click",function(){
+    if(ev){ev.prompt();ev.userChoice.finally(function(){ev=null;btn.hidden=true;});}
+    else if(ios){alert("To install: tap the Share button, then Add to Home Screen.");}
+  });
+  window.addEventListener("appinstalled",function(){btn.hidden=true;});
 })();
 </script>
 </body></html>
