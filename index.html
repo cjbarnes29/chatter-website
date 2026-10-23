@@ -429,7 +429,7 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
   }
   function pick(list){
     for(var i=0;i<list.length;i++){var r=list[i];if(r.draft)continue;
-      var as=(r.assets||[]).filter(function(a){return /\.apk$/i.test(a.name);});
+      var as=(r.assets||[]).filter(function(a){return /scrmbl.*\.apk$/i.test(a.name);   /* only the scrambled (scrmbl) APK is offered */});
       if(as.length)return as[0].browser_download_url;}
     return null;
   }
