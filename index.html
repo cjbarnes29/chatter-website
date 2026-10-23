@@ -419,6 +419,9 @@ body.paused .aurora i,body.paused .ring,body.paused .chip,body.paused .ticker di
       if(as.length)return as[0].browser_download_url;}
     return null;
   }
+  /* Download switched off on purpose. Set this to true to turn the automatic download button back on. */
+  var DOWNLOAD_ENABLED=false;
+  if(!DOWNLOAD_ENABLED)return;
   try{
     fetch(API,{headers:{Accept:'application/vnd.github+json'}}).then(function(r){
       if(!r.ok)return 'unknown';               /* rate limit etc.: still give a way to the downloads */
